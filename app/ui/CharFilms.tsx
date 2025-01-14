@@ -7,8 +7,8 @@ export type CharFilmsProps = {
 
 export default function CharFilms({ charId }: CharFilmsProps) {
   const { data: films, isError, isLoading} = useQuery({ 
-    queryKey: ["getFilmByCharId", charId] as const, 
-    queryFn: ({ queryKey: [_, charId] }) => getFilmsByCharId(charId)
+    queryKey: ["getFilmsByCharId", charId] as const, 
+    queryFn: ({ queryKey: [, charId] }) => getFilmsByCharId(charId)
   });
 
   if(isLoading) {
@@ -20,8 +20,7 @@ export default function CharFilms({ charId }: CharFilmsProps) {
   }
   
  return <ul>
-   {films.map(({id, title}) => {
-      return <li key={charId.toString()+id.toString()}>{title}</li>
-  })} 
+   {films.map(({id, title}) => 
+      <li key={charId.toString() + id.toString()}>{title}</li>)} 
   </ul>
 }

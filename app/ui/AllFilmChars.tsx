@@ -19,11 +19,9 @@ export default function AllFilmChars() {
   }
   
  return data.map(({id, name}) => {
-   return <>
-    <div key={id}>
+   return <div key={id}>
     <h1 className="text-3xl font-bold underline">{name}</h1>      
       <CharFilms key={id} charId={id}/>
     </div>
-   </>;
   }); 
 };
